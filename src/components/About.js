@@ -13,18 +13,23 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <p>
-            I am a passionate Software Engineer with a strong foundation in computer science
-            and a keen interest in developing innovative solutions. My journey in technology
-            has equipped me with diverse skills in software development, system architecture,
-            and problem-solving.
+            Highly motivated and adaptable computer science student with a passion for cloud engineering and DevOps. 
+            Possess strong programming skills (Golang, Python) and Linux experience to automate tasks and build 
+            applications using Docker. Eager to contribute to a team environment and continuously learn new technologies.
           </p>
           <div className="education">
             <h3>Education</h3>
             <div className="education-item">
-              <h4>Bachelor of Computer Science</h4>
-              <p>BINUS University</p>
-              <p>2020 - 2024</p>
-              <p>GPA: 3.95/4.00</p>
+              <h4>TAMKANG UNIVERSITY</h4>
+              <p>Taiwan, New Taipei City</p>
+              <p>Bachelor of Computer Science and Information Engineering</p>
+              <p>2021 - Present</p>
+            </div>
+            <div className="education-item">
+              <h4>BINUS SCHOOL BEKASI</h4>
+              <p>Indonesia, West Java</p>
+              <p>High School, Natural Science</p>
+              <p>2018 - 2021</p>
             </div>
           </div>
         </motion.div>

@@ -65,7 +65,10 @@ const Hero = () => {
             </a>
           </p>
         </motion.div>
-        <motion.button 
+        <motion.a 
+          href="https://github.com/Acidlambunk"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hero-button"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -74,7 +77,7 @@ const Hero = () => {
           whileTap={{ scale: 0.95 }}
         >
           Explore My Work
-        </motion.button>
+        </motion.a>
       </motion.div>
     </section>
   );
