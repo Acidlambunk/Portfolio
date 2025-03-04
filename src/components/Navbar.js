@@ -1,34 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [isOpen, setIsOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      const visible = prevScrollPos > currentScrollPos || currentScrollPos < 10;
-
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
       setPrevScrollPos(currentScrollPos);
-      setVisible(visible);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos]);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className={`navbar ${visible ? 'navbar-visible' : 'navbar-hidden'}`}>
-      <Link to="/" className="navbar-brand">
-        My Portfolio
-      </Link>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/skills">Skills</Link></li>
-        <li><Link to="/projects">Projects</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
+      <div className="navbar-brand">
+        Benedict Brian Mulia
+      </div>
+
+      <div className="hamburger" onClick={toggleMenu}>
+        <span className={`bar ${isOpen ? 'active' : ''}`}></span>
+        <span className={`bar ${isOpen ? 'active' : ''}`}></span>
+        <span className={`bar ${isOpen ? 'active' : ''}`}></span>
+      </div>
+
+      <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
+        <li><a href="#home" onClick={() => setIsOpen(false)}>Home</a></li>
+        <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
+        <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
+        <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
+        <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
       </ul>
     </nav>
   );

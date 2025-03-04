@@ -71,7 +71,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.navbar ul {
+.navbar-links {
   list-style: none;
   display: flex;
   justify-content: flex-end;
@@ -80,7 +80,7 @@ body {
   padding: 0;
 }
 
-.navbar a {
+.navbar-links a {
   color: var(--navbar-text);
   text-decoration: none;
   font-weight: 500;
@@ -89,10 +89,9 @@ body {
   padding: 0.5rem;
   position: relative;
   outline: none;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.navbar a::after {
+.navbar-links a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -103,12 +102,27 @@ body {
   transition: all 0.3s ease;
 }
 
-.navbar a:hover {
+.navbar-links a:hover {
   color: var(--navbar-text-hover);
 }
 
-.navbar a:hover::after {
+.navbar-links a:hover::after {
   width: 100%;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease;
+  background-color: var(--navbar-text);
 }
 
 section {
@@ -478,21 +492,51 @@ section {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 0;
-  }
-
-  .navbar a {
+  .hamburger {
     display: block;
+    z-index: 101;
+  }
+
+  .hamburger .bar.active:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger .bar.active:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger .bar.active:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
     width: 100%;
-    text-align: center;
-    padding: 0.75rem;
+    height: 100vh;
+    background: var(--navbar-background);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    padding: 2rem;
+  }
+
+  .navbar-links.active {
+    right: 0;
+  }
+
+  .navbar-links li {
+    margin: 1rem 0;
+  }
+
+  .navbar-links a {
+    font-size: 1.4rem;
   }
 
   section {
