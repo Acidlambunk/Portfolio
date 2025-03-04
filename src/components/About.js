@@ -41,7 +41,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.img 
-            src="/a.jpg" 
+            src="/a.JPG" 
             alt="About Benedict Brian Mulia"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
